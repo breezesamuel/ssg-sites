@@ -1,0 +1,18 @@
+{
+  "builtAt": "2026-09-12T11:03:58.982Z",
+  "repo": "https://github.com/breezesamuel/ssg-sites",
+  "githubPages": {
+    "root": "https://breezesamuel.github.io/ssg-sites/",
+    "zh": "https://breezesamuel.github.io/ssg-sites/zh/",
+    "en": "https://breezesamuel.github.io/ssg-sites/en/",
+    "buy": "https://breezesamuel.github.io/ssg-sites/buy/ai-worker.html"
+  },
+  "jsDelivr": {
+    "zh": "https://cdn.jsdelivr.net/gh/breezesamuel/ssg-sites@main/zh/index.html",
+    "en": "https://cdn.jsdelivr.net/gh/breezesamuel/ssg-sites@main/en/index.html",
+    "buy": "https://cdn.jsdelivr.net/gh/breezesamuel/ssg-sites@main/buy/ai-worker.html"
+  },
+  "tunnels": {
+    "live": "https://elimination-deer-edit-tel.trycloudflare.com"
+  }
+}
