@@ -13,7 +13,7 @@ function rand(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 const PRICES = { tarot:30, ziwei:50, qimen:68, face:30, poem:20, daily:0,
   bazi:58, liuyao:30, meihua:30, xingming:30, star:30, zodiac:30,
   guanyin:30, zhougong:20, hehun:38, ceyu:20, phone:30, palm:30, name:30 };
-const PLATFORM = 'http://127.0.0.1:3745'; // 神算阁收款网关
+const PLATFORM=(location.hostname.endsWith('.trycloudflare.com')||location.hostname==='127.0.0.1'||location.hostname==='localhost')?'':'https://elimination-deer-edit-tel.trycloudflare.com'; // 神算阁收款网关
 const OUTS = { tarot:'#tarot-out', ziwei:'#ziwei-out', qimen:'#qimen-out', face:'#face-out', poem:'#poem-out', daily:'#daily-out',
   bazi:'#bazi-out', liuyao:'#liuyao-out', meihua:'#meihua-out', xingming:'#xingming-out', star:'#star-out', zodiac:'#zodiac-out',
   guanyin:'#guanyin-out', zhougong:'#zhougong-out', hehun:'#hehun-out', ceyu:'#ceyu-out', phone:'#phone-out', palm:'#palm-out', name:'#name-out' };
