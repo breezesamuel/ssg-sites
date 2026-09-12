@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Shen Suan Ge · AI Divination · Tarot·BaZi·I-Ching·Zodiac</title>
+<meta name="description" content="AI fortune platform · Tarot / BaZi / Qi Men / I-Ching / Nameology / Zodiac / Dream / Palmistry · from $4">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <header class="hero">
+    <h1 class="logo">Shen Suan Ge</h1>
+    <p class="slogan">AI Divination · Mysteries Solved · From $4</p>
+  </header>
+  <nav class="tabs" id="tabs">
+    <button class="tab on" data-page="home">Home</button>
+    <button class="tab" data-page="tarot">Tarot</button>
+    <button class="tab" data-page="ziwei">Purple Star</button>
+    <button class="tab" data-page="bazi">BaZi</button>
+    <button class="tab" data-page="liuyao">I-Ching</button>
+    <button class="tab" data-page="meihua">Plum Flower</button>
+    <button class="tab" data-page="xingming">Nameology</button>
+    <button class="tab" data-page="qimen">Qi Men</button>
+    <button class="tab" data-page="star">Zodiac</button>
+    <button class="tab" data-page="zodiac">Chinese Zodiac</button>
+    <button class="tab" data-page="guanyin">Kwan Yin</button>
+    <button class="tab" data-page="zhougong">Dream</button>
+    <button class="tab" data-page="hehun">Match</button>
+    <button class="tab" data-page="ceyu">Char Div</button>
+    <button class="tab" data-page="phone">Number Energy</button>
+    <button class="tab" data-page="palm">Palmistry</button>
+    <button class="tab" data-page="poem">Poem Sign</button>
+    <button class="tab" data-page="face">Face</button>
+    <button class="tab" data-page="daily">Daily</button>
+  </nav>
+  <main id="pages">
+  <section class="page on" data-page="home"><div class="card">
+<h2>One-tap Fortune</h2>
+<p class="muted">Pick your destiny path, AI master reveals the answer. Free first reading, full reading from $4.</p>
+<button class="btn primary big" onclick="go('tarot')">Free Tarot Draw</button>
+</div>
+<div class="grid">
+<div class="tile" onclick="go('poem')"><span>詩</span><b>Poem Sign</b><i>FREE</i></div>
+<div class="tile" onclick="go('daily')"><span>☀</span><b>Daily Fortune</b><i>FREE</i></div>
+<div class="tile" onclick="go('star')"><span>★</span><b>Western Zodiac</b><i>FREE</i></div>
+<div class="tile" onclick="go('zodiac')"><span>肖</span><b>Chinese Zodiac</b><i>FREE</i></div>
+<div class="tile" onclick="go('face')"><span>面</span><b>Face Reading</b><i>$4</i></div>
+<div class="tile" onclick="go('ziwei')"><span>紫</span><b>Purple Star</b><i>$7</i></div>
+<div class="tile" onclick="go('bazi')"><span>八</span><b>BaZi Chart</b><i>$8</i></div>
+<div class="tile" onclick="go('qimen')"><span>奇</span><b>Qi Men</b><i>$9</i></div>
+<div class="tile" onclick="go('tarot')"><span>塔</span><b>Tarot</b><i>$4</i></div>
+</div>
+<div class="card note"><h3>Why Shen Suan Ge</h3><ul>
+<li>AI fortune engine, 24/7 instant reading</li>
+<li>Secure PayPal payment</li>
+<li>Clear pricing, $4–$95 per reading</li>
+<li>Exportable, saved forever</li>
+</ul></div></section>
+  <section class="page" data-page="tarot"><div class="card">
+<h2>Tarot · Three-Card Reading</h2><p class="muted">Hold a question, draw three cards: Past · Present · Future.</p><button class="btn primary" onclick="tarotDraw()">Draw (free)</button><button class="btn" onclick="tarotPay()">Full reading $4</button>
+<div id="tarot-out" class="out"></div>
+</div></section>
+  <section class="page" data-page="ziwei"><div class="card"><h2>Purple Star · Chart</h2><label>Birth date</label><input type="date" id="zw-birth"><button class="btn primary" onclick="ziweiFree()">Free: main star</button><button class="btn" onclick="ziweiPay()">Full chart $7</button><div id="ziwei-out" class="out"></div></div></section>
+  <section class="page" data-page="bazi"><div class="card"><h2>BaZi · Four Pillars</h2><label>Birth date</label><input type="date" id="bz-birth"><label>Birth hour</label><select id="bz-hour"><option value="0">23:00-01:00</option><option value="1">01:00-03:00</option><option value="2">03:00-05:00</option><option value="3">05:00-07:00</option><option value="4">07:00-09:00</option><option value="5">09:00-11:00</option><option value="6">11:00-13:00</option><option value="7">13:00-15:00</option><option value="8">15:00-17:00</option><option value="9">17:00-19:00</option><option value="10">19:00-21:00</option><option value="11">21:00-23:00</option></select><button class="btn primary" onclick="baziFree()">Free chart</button><button class="btn" onclick="baziPay()">Full reading $8</button><div id="bazi-out" class="out"></div></div></section>
+  <section class="page" data-page="liuyao"><div class="card">
+<h2>I-Ching · Six Lines</h2><p class="muted">Hold a question, cast the coins.</p><button class="btn primary" onclick="liuyaoDraw()">Cast (free)</button><button class="btn" onclick="liuyaoPay()">Detail $4</button>
+<div id="liuyao-out" class="out"></div>
+</div></section>
+  <section class="page" data-page="meihua"><div class="card"><h2>Plum Blossom · Number Casting</h2><label>Two numbers (1-99)</label><input type="number" id="mh-a" min="1" max="99" placeholder="Number 1"><input type="number" id="mh-b" min="1" max="99" placeholder="Number 2"><button class="btn primary" onclick="meihuaDraw()">Cast (free)</button><button class="btn" onclick="meihuaPay()">Reading $4</button><div id="meihua-out" class="out"></div></div></section>
+  <section class="page" data-page="xingming"><div class="card"><h2>Nameology · Five Grids</h2><label>Your name (2+ chars)</label><input type="text" id="xm-name" placeholder="e.g. Mei Lin" maxlength="8"><button class="btn primary" onclick="xingmingFree()">Free chart</button><button class="btn" onclick="xingmingPay()">Detail $4</button><div id="xingming-out" class="out"></div></div></section>
+  <section class="page" data-page="qimen"><div class="card"><h2>Qi Men · Timing</h2><label>Moment (default now)</label><input type="datetime-local" id="qm-time"><button class="btn primary" onclick="qimenFree()">Cast (free)</button><button class="btn" onclick="qimenPay()">Detail $9</button><div id="qimen-out" class="out"></div></div></section>
+  <section class="page" data-page="star"><div class="card"><h2>Western Zodiac</h2><label>Birth date</label><input type="date" id="st-birth"><button class="btn primary" onclick="starFree()">Free: your sign</button><button class="btn" onclick="starPay()">Full reading $4</button><div id="star-out" class="out"></div></div></section>
+  <section class="page" data-page="zodiac"><div class="card"><h2>Chinese Zodiac</h2><label>Birth year</label><input type="number" id="zd-year" min="1924" max="2026" placeholder="e.g. 1990"><button class="btn primary" onclick="zodiacFree()">Free: this year</button><button class="btn" onclick="zodiacPay()">Full year $4</button><div id="zodiac-out" class="out"></div></div></section>
+  <section class="page" data-page="guanyin"><div class="card">
+<h2>Kwan Yin Fortune Sign</h2><p class="muted">Hold a question, draw a sign with sincerity.</p><button class="btn primary" onclick="guanyinDraw()">Draw (free)</button><button class="btn" onclick="guanyinPay()">Detail $4</button>
+<div id="guanyin-out" class="out"></div>
+</div></section>
+  <section class="page" data-page="zhougong"><div class="card"><h2>Dream Oracle</h2><label>What did you dream?</label><input type="text" id="zg-dream" placeholder="e.g. water, teeth, flying..."><button class="btn primary" onclick="zhougongFree()">Free reading</button><button class="btn" onclick="zhougongPay()">Deep reading $3</button><div id="zhougong-out" class="out"></div></div></section>
+  <section class="page" data-page="hehun"><div class="card"><h2>Match Making</h2><label>Your birth date</label><input type="date" id="hh-a"><label>Partner birth date</label><input type="date" id="hh-b"><button class="btn primary" onclick="hehunFree()">Free match</button><button class="btn" onclick="hehunPay()">Full analysis $5</button><div id="hehun-out" class="out"></div></div></section>
+  <section class="page" data-page="ceyu"><div class="card"><h2>Chinese Character Divination</h2><label>Report one character</label><input type="text" id="cy-char" maxlength="1" placeholder="e.g. 福"><button class="btn primary" onclick="ceyuFree()">Divine (free)</button><button class="btn" onclick="ceyuPay()">Detail $3</button><div id="ceyu-out" class="out"></div></div></section>
+  <section class="page" data-page="phone"><div class="card"><h2>Phone Number Energy</h2><label>Phone (last 4+ digits)</label><input type="text" id="ph-num" placeholder="e.g. 13812345678"><button class="btn primary" onclick="phoneFree()">Free: tail</button><button class="btn" onclick="phonePay()">Full number $4</button><div id="phone-out" class="out"></div></div></section>
+  <section class="page" data-page="palm"><div class="card"><h2>Palmistry</h2><label>Choose your most obvious line</label><select id="pm-line"><option value="0">Life line</option><option value="1">Head line</option><option value="2">Heart line</option><option value="3">Fate line</option><option value="4">Sun line</option><option value="5">Health line</option></select><button class="btn primary" onclick="palmFree()">Free: the line</button><button class="btn" onclick="palmPay()">Full $4</button><div id="palm-out" class="out"></div></div></section>
+  <section class="page" data-page="poem"><div class="card">
+<h2>Poem Fortune Sign</h2><p class="muted">Hold a question, draw a sign.</p><button class="btn primary" onclick="poemDraw()">Draw (free)</button><button class="btn" onclick="poemPay()">Detail $3</button>
+<div id="poem-out" class="out"></div>
+</div></section>
+  <section class="page" data-page="face"><div class="card"><h2>Face Reading</h2><p class="muted">AI analyzes facial features (text-based). No upload needed.</p><button class="btn primary" onclick="faceAnalyze()">Analyze (free)</button><button class="btn" onclick="facePay()">Full report $4</button><div id="face-out" class="out"></div></div></section>
+  <section class="page" data-page="daily"><div class="card"><h2>Daily Fortune</h2><label>Birth date (optional)</label><input type="date" id="dl-birth"><button class="btn primary" onclick="dailyLoad()">Today fortune (free)</button><div id="daily-out" class="out"></div></div></section>
+  </main>
+  <footer class="foot">
+    <p>Shen Suan Ge · AI Fortune Platform</p>
+    <p class="muted">For entertainment only</p>
+  </footer>
+</div>
+<div id="toast" class="toast"></div>
+<script src="js/data-en.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
