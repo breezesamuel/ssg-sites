@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Affiliate Program · AI Business Operator System · 30% commission</title>
+<style>
+body{background:#080b10;color:#e7ecf3;font:15px/1.7 -apple-system,Segoe UI,Roboto,sans-serif;max-width:760px;margin:0 auto;padding:32px 18px}
+h1{font-size:26px;line-height:1.35}
+h2{font-size:19px;margin-top:32px}
+.card{background:#10151d;border:1px solid #232c3b;border-radius:12px;padding:20px 22px;margin:14px 0}
+code,.addr{background:#0b0e13;border:1px solid #232c3b;border-radius:6px;padding:8px 12px;font:12px/1.5 ui-monospace,Consolas,monospace;word-break:break-all;display:inline-block}
+.ok{color:#4ade80}.warn{color:#f0c987}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+td,th{border:1px solid #232c3b;padding:9px 11px;text-align:left;font-size:14px}
+th{background:#141924}
+</style>
+</head>
+<body>
+<h1>Earn 30% — forever.</h1>
+<p>Sell the <b>AI Business Operator System</b> (a 7×24 autonomous freelance agent that lands paying clients for its owner) and take <b>$30</b> per every <b>$99</b> sale. No stock, no support duties, no limits. Payout auto-credited in USDC (Base) when the buyer's payment clears.</p>
+
+<div class="card">
+<h2>1. Grab your link</h2>
+Your personal link:
+<div class="addr" id="link">…</div>
+<form onsubmit="return false" style="margin-top:10px">
+<input id="name" placeholder="your name / handle / sub-account" style="background:#0b0e13;color:#e7ecf3;border:1px solid #232c3b;border-radius:8px;padding:10px;width:60%">
+<button onclick="mk()" style="background:#4ade80;color:#06250e;font-weight:700;border:none;border-radius:8px;padding:10px 18px;cursor:pointer">Make my link</button>
+</form>
+</div>
+
+<div class="card">
+<h2>2. Post your link anywhere</h2>
+<p>GitHub README, X/Twitter, Reddit, Dev.to, your website, a blog about indie hacking or side commissions. Every click is tracked. When the visitor pays <b>USDC on Base</b>, your <b>$30</b> is recorded instantly.</p>
+</div>
+
+<div class="card">
+<h2>3. Get paid</h2>
+<p>Commission ledger is public and verifiable below. Payouts are open to USDC (Base) or your own repo — bring traffic, we settle share as agreed.</p>
+<p class="warn">Requirement: don't bid against the product with paid-ads on trademarked brand terms. Everything else is fair game.</p>
+</div>
+
+<div class="card">
+<h2>Why people buy it</h2>
+<table>
+<tr><th>Problem</th><th>What the operator does</th></tr>
+<tr><td>No time to hunt freelance jobs</td><td>Auto-scan freelance platforms, bid, and win contracts 24/7</td></tr>
+<tr><td>No invoicing / no collection</td><td>Quotes, invoices, and payment follow-ups automated</td></tr>
+<tr><td>Starting from zero</td><td>Built-in campaigns and delivery playbooks included</td></tr>
+</table>
+<p>Long-term customer? Referrals become recurring: renewals pay <b>30%</b> of every $99/month as long as the customer stays.</p>
+</div>
+
+<div class="card">
+<h2>Public commission ledger</h2>
+<div id="ledger">loading…</div>
+</div>
+
+<script>
+const BASE=(location.hostname.endsWith('.trycloudflare.com')||location.hostname==='127.0.0.1'||location.hostname==='localhost')?'':'https://elimination-deer-edit-tel.trycloudflare.com'
+function mk(){
+  const n=(document.getElementById('name').value||'').trim().replace(/[^a-zA-Z0-9_-]/g,'').toLowerCase().slice(0,24)
+  const ln=location.origin+location.pathname.replace(/[^/]*$/,'')+'ai-worker.html'+(n?'?ref='+n:'')
+  document.getElementById('link').textContent=ln
+  navigator.clipboard.writeText(ln).catch(()=>{})
+}
+mk()
+async function ledger(){
+  try{
+    const r=await fetch(BASE+'/api/vendor').then(x=>x.ok?x.json():null)
+    if(!r||!r.orders||!r.orders.length){document.getElementById('ledger').textContent='No orders yet — be the first referral!'}
+    else document.getElementById('ledger').textContent=r.orders.filter(o=>o.desc&&o.desc.includes('[ref=')).map(o=>o.id+'  $'+o.amount+'  '+o.desc).join('\n')
+  }catch(e){document.getElementById('ledger').textContent='(ledger API offline)'}
+}
+ledger()
+</script>
+</body>
+</html>

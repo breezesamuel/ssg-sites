@@ -61,15 +61,20 @@ li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700
 <script>
 const ADDR='0x52Ac54147B6D4ED35dA48e8560f4B5B7c2216130'
 const API_BASE=(location.hostname.endsWith('.trycloudflare.com')||location.hostname==='127.0.0.1'||location.hostname==='localhost')?'':'https://elimination-deer-edit-tel.trycloudflare.com'
+const REF=new URLSearchParams(location.search).get('ref')
 const out=()=>document.getElementById('out')
 function copyAddr(){navigator.clipboard.writeText(ADDR).then(()=>{out().textContent='收款地址已复制(USDC · Base)'})}
 async function order(){
   const amount=parseFloat(document.getElementById('pricetxt')?document.getElementById('pricetxt').value:'99')||99
   const desc=document.getElementById('desctxt')?document.getElementById('desctxt').value:'AI 打工人经营系统'
+  const d=REF?desc+' [ref='+REF+']':desc
   out().textContent='生成中...'
-  const r=await fetch(API_BASE+'/api/vendor/order',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({amount,desc})}).then(r=>r.json())
-  out().textContent='收款单 #'+r.id+' 已建立 金额 $'+r.amount+'('+desc+')\n发送 USDC(Base) 到:\n'+ADDR+'\n到账自动核对,3 分钟内开通。'
+  const r=await fetch(API_BASE+'/api/vendor/order',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({amount,desc:d})}).then(r=>r.json())
+  out().textContent='收款单 #'+r.id+' 已建立 金额 $'+r.amount+'('+d+')'+(REF?'\n(经推荐人 '+REF+',双方享返佣)':'')+'\n发送 USDC(Base) 到:\n'+ADDR+'\n到账自动核对,3 分钟内开通。'
 }
+window.addEventListener('load',()=>{
+  if(REF){ const b=document.querySelector('.out'); b.textContent='本单经推荐人 '+REF+' 访问;付款成功后双方各得 $15 返佣。' }
+})
 </script>
 </body>
 </html>
